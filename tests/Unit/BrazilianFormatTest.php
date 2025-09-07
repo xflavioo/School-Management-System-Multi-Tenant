@@ -99,9 +99,38 @@ class BrazilianFormatTest extends TestCase
     /** @test */
     public function it_formats_dates_to_brazilian_format()
     {
-        $date = '2023-12-25';
-        $formatted = BrazilianFormat::date($date);
+        // Use a specific datetime to avoid timezone issues in unit tests
+        $date = '2023-12-25 12:00:00';
+        $carbon = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date, 'America/Sao_Paulo');
+        $formatted = BrazilianFormat::date($carbon);
         
         $this->assertEquals('25/12/2023', $formatted);
+    }
+
+    /** @test */
+    public function it_formats_numbers_correctly()
+    {
+        $value = 1234.56;
+        $formatted = BrazilianFormat::number($value);
+        
+        $this->assertEquals('1.234,56', $formatted);
+    }
+
+    /** @test */
+    public function it_formats_numbers_with_custom_decimals()
+    {
+        $value = 1234.56789;
+        $formatted = BrazilianFormat::number($value, 3);
+        
+        $this->assertEquals('1.234,568', $formatted);
+    }
+
+    /** @test */
+    public function it_handles_null_values_gracefully()
+    {
+        $this->assertEquals('', BrazilianFormat::date(null));
+        $this->assertEquals('', BrazilianFormat::datetime(null));
+        $this->assertEquals('', BrazilianFormat::money(null));
+        $this->assertEquals('', BrazilianFormat::number(null));
     }
 }

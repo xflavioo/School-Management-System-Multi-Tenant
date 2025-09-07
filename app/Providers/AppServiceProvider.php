@@ -48,6 +48,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('phoneBR', function ($expression) {
             return "<?php echo App\Helpers\BrazilianFormat::phone($expression); ?>";
         });
+
+        Blade::directive('numberBR', function ($expression) {
+            return "<?php echo App\Helpers\BrazilianFormat::number($expression); ?>";
+        });
     }
 
     /**
