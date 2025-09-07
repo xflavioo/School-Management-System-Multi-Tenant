@@ -7,6 +7,7 @@
 <script src="{{ asset('global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
 <script src="{{ asset('global_assets/js/plugins/forms/inputs/inputmask.js') }}"></script>
 <script src="{{ asset('global_assets/js/plugins/forms/validation/validate.min.js') }}"></script>
+<script src="{{ asset('js/jquery-validation-pt-BR.js') }}"></script>
 <script src="{{ asset('global_assets/js/plugins/extensions/cookie.js') }}"></script>
 
 {{--Notify--}}

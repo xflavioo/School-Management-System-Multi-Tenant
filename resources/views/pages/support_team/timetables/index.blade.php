@@ -1,20 +1,20 @@
 @extends('layouts.master')
-@section('page_title', 'Manage TimeTables')
+@section('page_title', __('general.manage_timetables'))
 @section('content')
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Manage TimeTables</h6>
+            <h6 class="card-title">{{ __('general.manage_timetables') }}</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-highlight">
                 @if(Qs::userIsTeamSA())
-                <li class="nav-item"><a href="#add-tt" class="nav-link active" data-toggle="tab">Create Timetable</a></li>
+                <li class="nav-item"><a href="#add-tt" class="nav-link active" data-toggle="tab">{{ __('general.create_timetable') }}</a></li>
                 @endif
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Show TimeTables</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('general.show_timetables') }}</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         @foreach($my_classes as $mc)
                             <a href="#ttr{{ $mc->id }}" class="dropdown-item" data-toggle="tab">{{ $mc->name }}</a>
@@ -32,16 +32,16 @@
                        <form class="ajax-store" method="post" action="{{ route('ttr.store') }}">
                            @csrf
                            <div class="form-group row">
-                               <label class="col-lg-3 col-form-label font-weight-semibold">Name <span class="text-danger">*</span></label>
+                               <label class="col-lg-3 col-form-label font-weight-semibold">Nome <span class="text-danger">*</span></label>
                                <div class="col-lg-9">
-                                   <input name="name" value="{{ old('name') }}" required type="text" class="form-control" placeholder="Name of TimeTable">
+                                   <input name="name" value="{{ old('name') }}" required type="text" class="form-control" placeholder="Nome do Horário">
                                </div>
                            </div>
 
                            <div class="form-group row">
-                               <label for="my_class_id" class="col-lg-3 col-form-label font-weight-semibold">Class <span class="text-danger">*</span></label>
+                               <label for="my_class_id" class="col-lg-3 col-form-label font-weight-semibold">Turma <span class="text-danger">*</span></label>
                                <div class="col-lg-9">
-                                   <select required data-placeholder="Select Class" class="form-control select" name="my_class_id" id="my_class_id">
+                                   <select required data-placeholder="Selecionar Turma" class="form-control select" name="my_class_id" id="my_class_id">
                                        @foreach($my_classes as $mc)
                                            <option {{ old('my_class_id') == $mc->id ? 'selected' : '' }} value="{{ $mc->id }}">{{ $mc->name }}</option>
                                        @endforeach
@@ -50,10 +50,10 @@
                            </div>
 
                            <div class="form-group row">
-                               <label for="exam_id" class="col-lg-3 col-form-label font-weight-semibold">Type (Class or Exam)</label>
+                               <label for="exam_id" class="col-lg-3 col-form-label font-weight-semibold">Tipo (Turma ou Avaliação)</label>
                                <div class="col-lg-9">
                                    <select class="select form-control" name="exam_id" id="exam_id">
-                                       <option value="">Class Timetable</option>
+                                       <option value="">Turma</option>
                                        @foreach($exams as $ex)
                                            <option {{ old('exam_id') == $ex->id ? 'selected' : '' }} value="{{ $ex->id }}">{{ $ex->name }}</option>
                                        @endforeach
@@ -63,7 +63,7 @@
 
 
                            <div class="text-right">
-                               <button id="ajax-btn" type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                               <button id="ajax-btn" type="submit" class="btn btn-primary">Enviar Formulário <i class="icon-paperplane ml-2"></i></button>
                            </div>
                        </form>
                    </div>
@@ -75,12 +75,12 @@
                     <div class="tab-pane fade" id="ttr{{ $mc->id }}">                         <table class="table datatable-button-html5-columns">
                             <thead>
                             <tr>
-                                <th>S/N</th>
-                                <th>Name</th>
-                                <th>Class</th>
-                                <th>Type</th>
-                                <th>Year</th>
-                                <th>Action</th>
+                                <th>N°</th>
+                                <th>Nome</th>
+                                <th>Turma</th>
+                                <th>Tipo</th>
+                                <th>Ano</th>
+                                <th>Ação</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -89,7 +89,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $ttr->name }}</td>
                                     <td>{{ $ttr->my_class->name }}</td>
-                                    <td>{{ ($ttr->exam_id) ? $ttr->exam->name : 'Class TimeTable' }}
+                                    <td>{{ ($ttr->exam_id) ? $ttr->exam->name : 'Turma' }}</td>
                                     <td>{{ $ttr->year }}</td>
                                     <td class="text-center">
                                         <div class="list-icons">

@@ -10,7 +10,7 @@ Route::get('/terms-of-use', 'HomeController@terms_of_use')->name('terms_of_use')
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@dashboard')->name('home');
-    Route::get('/home', 'HomeController@dashboard')->name('home');
+
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
     Route::group(['prefix' => 'my_account'], function() {
@@ -149,12 +149,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     /************************ AJAX ****************************/
     Route::group(['prefix' => 'ajax'], function() {
-        Route::get('get_lga/{state_id}', 'AjaxController@get_lga')->name('get_lga');
+        
         Route::get('get_class_sections/{class_id}', 'AjaxController@get_class_sections')->name('get_class_sections');
         Route::get('get_class_subjects/{class_id}', 'AjaxController@get_class_subjects')->name('get_class_subjects');
     });
 
 });
+
+Route::get('ajax/get-lgas/{state_id}', 'AjaxController@get_lgas')->name('get_lgas');
 
 /************************ SUPER ADMIN ****************************/
 Route::group(['namespace' => 'SuperAdmin','middleware' => 'super_admin', 'prefix' => 'super_admin'], function(){

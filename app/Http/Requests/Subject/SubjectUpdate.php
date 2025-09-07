@@ -31,9 +31,9 @@ class SubjectUpdate extends FormRequest
     public function attributes()
     {
         return  [
-            'my_class_id' => 'Class',
-            'teacher_id' => 'Teacher',
-            'slug' => 'Short Name',
+            'my_class_id' => 'Turma',
+            'teacher_id' => 'Professor',
+            'slug' => 'Nome Abreviado',
         ];
     }
 

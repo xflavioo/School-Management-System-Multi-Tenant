@@ -36,7 +36,7 @@ class SubjectController extends Controller
         $data = $req->all();
         $this->my_class->createSubject($data);
 
-        return Qs::jsonStoreOk();
+        return back()->with('flash_success', __('msg.store_ok'));
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class SubjectController extends Controller
         $data = $req->all();
         $this->my_class->updateSubject($id, $data);
 
-        return Qs::jsonUpdateOk();
+        return back()->with('flash_success', __('msg.update_ok'));
     }
 
     public function destroy($id)

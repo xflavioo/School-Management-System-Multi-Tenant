@@ -58,7 +58,7 @@ class SectionController extends Controller
     public function destroy($id)
     {
         if($this->my_class->isActiveSection($id)){
-            return back()->with('pop_warning', 'Every class must have a default section, You Cannot Delete It');
+            return back()->with('pop_warning', 'Toda turma deve ter uma seção padrão, você não pode excluí-la');
         }
 
         $this->my_class->deleteSection($id);

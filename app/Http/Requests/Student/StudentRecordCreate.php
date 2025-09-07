@@ -5,6 +5,8 @@ namespace App\Http\Requests\Student;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Helpers\Qs;
 
+use App\Rules\ValidCpf;
+
 class StudentRecordCreate extends FormRequest
 {
 
@@ -37,6 +39,8 @@ class StudentRecordCreate extends FormRequest
             'section_id' => 'required',
             'my_parent_id' => 'sometimes|nullable',
             'dorm_id' => 'sometimes|nullable',
+            'cpf' => ['sometimes', 'nullable', new ValidCpf],
+            'rg' => 'sometimes|nullable|string|min:5|max:20',
         ];
     }
 

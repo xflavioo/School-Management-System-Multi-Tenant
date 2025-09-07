@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('page_title', 'Edit Time Slot')
+@section('page_title', 'Editar Período')
 @section('content')
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h6 class="font-weight-bold card-title">Edit Time Slots</h6>
+        <h6 class="font-weight-bold card-title">Editar Períodos</h6>
         {!! Qs::getPanelOptions() !!}
     </div>
 
@@ -15,11 +15,11 @@
 
                 {{--TIME BEGIN--}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label font-weight-semibold">Start Time <span
+                    <label class="col-lg-3 col-form-label font-weight-semibold">Horário de Início <span
                                 class="text-danger">*</span></label>
 
                     <div class="col-lg-3">
-                        <select data-placeholder="Hour" required class="select-search form-control" name="hour_from" id="hour_from">
+                        <select data-placeholder="Hora" required class="select-search form-control" name="hour_from" id="hour_from">
 
                             <option value=""></option>
                             @for($t=1; $t<=12; $t++)
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <select data-placeholder="Minute" required class="select-search form-control" name="min_from" id="min_from">
+                        <select data-placeholder="Minuto" required class="select-search form-control" name="min_from" id="min_from">
 
                             <option value=""></option>
                             <option value="00">00</option>
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <select data-placeholder="Meridian" required class="select form-control" name="meridian_from" id="meridian_from">
+                        <select data-placeholder="Período" required class="select form-control" name="meridian_from" id="meridian_from">
 
                             <option value=""></option>
                             <option {{ $tms->meridian_from == 'AM' ? 'selected' : '' }} value="AM">AM
@@ -54,10 +54,10 @@
 
                 {{--TIME END--}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label font-weight-semibold">End Time <span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label font-weight-semibold">Horário de Término <span class="text-danger">*</span></label>
 
                     <div class="col-lg-3">
-                        <select data-placeholder="Hour" required class="select-search form-control" name="hour_to" id="hour_to">
+                        <select data-placeholder="Hora" required class="select-search form-control" name="hour_to" id="hour_to">
 
                             <option value=""></option>
                             @for($t=1; $t<=12; $t++)
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <select data-placeholder="Minute" required class="select-search form-control" name="min_to" id="min_to">
+                        <select data-placeholder="Minuto" required class="select-search form-control" name="min_to" id="min_to">
 
                             <option value=""></option>
                             <option value="00">00</option>
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <select data-placeholder="Meridian" required class="select form-control" name="meridian_to" id="meridian_to">
+                        <select data-placeholder="Período" required class="select form-control" name="meridian_to" id="meridian_to">
 
                             <option value=""></option>
                             <option {{ $tms->meridian_to == 'AM' ? 'selected' : '' }} value="AM">AM
@@ -92,7 +92,7 @@
 
 
                 <div class="text-right">
-                    <button id="ajax-btn" type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                    <button id="ajax-btn" type="submit" class="btn btn-primary">Enviar Formulário <i class="icon-paperplane ml-2"></i></button>
                 </div>
             </form>
         </div>

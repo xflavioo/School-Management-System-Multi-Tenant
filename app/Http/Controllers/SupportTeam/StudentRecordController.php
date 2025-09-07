@@ -51,37 +51,49 @@ class StudentRecordController extends Controller
 
     public function store(StudentRecordCreate $req)
     {
-       $data =  $req->only(Qs::getUserRecord());
-       $sr =  $req->only(Qs::getStudentData());
+        try {
+            $data = $req->only(Qs::getUserRecord());
+            $sr = $req->only(Qs::getStudentData());
 
-        $ct = $this->my_class->findTypeByClass($req->my_class_id)->code;
-       /* $ct = ($ct == 'J') ? 'JSS' : $ct;
-        $ct = ($ct == 'S') ? 'SS' : $ct;*/
+            $ct = $this->my_class->findTypeByClass($req->my_class_id)->code;
+            /* $ct = ($ct == 'J') ? 'JSS' : $ct;
+                $ct = ($ct == 'S') ? 'SS' : $ct;*/
 
-        $data['user_type'] = 'student';
-        $data['name'] = ucwords($req->name);
-        $data['code'] = strtoupper(Str::random(10));
-        $data['password'] = Hash::make('student');
-        $data['photo'] = Qs::getDefaultUserImage();
-        $adm_no = $req->adm_no;
-        $data['username'] = strtoupper(Qs::getAppCode().'/'.$ct.'/'.$sr['year_admitted'].'/'.($adm_no ?: mt_rand(1000, 99999)));
+            $data['user_type'] = 'student';
+            $data['name'] = ucwords($req->name);
+            $data['code'] = strtoupper(Str::random(10));
+            $data['password'] = Hash::make('student');
+            $data['photo'] = Qs::getDefaultUserImage();
+            $adm_no = $req->adm_no;
+            $data['username'] = strtoupper(Qs::getAppCode() . '/' . $ct . '/' . $sr['year_admitted'] . '/' . ($adm_no ?: mt_rand(1000, 99999)));
 
-        if($req->hasFile('photo')) {
-            $photo = $req->file('photo');
-            $f = Qs::getFileMetaData($photo);
-            $f['name'] = 'photo.' . $f['ext'];
-            $f['path'] = $photo->storeAs(Qs::getUploadPath('student').$data['code'], $f['name']);
-            $data['photo'] = asset('storage/' . $f['path']);
+            if ($req->hasFile('photo')) {
+                $photo = $req->file('photo');
+                $f = Qs::getFileMetaData($photo);
+                $f['name'] = 'photo.' . $f['ext'];
+                $f['path'] = $photo->storeAs(Qs::getUploadPath('student') . $data['code'], $f['name']);
+                $data['photo'] = asset('storage/' . $f['path']);
+            }
+
+            $user = $this->user->create($data); // Create User
+
+            $sr['adm_no'] = $data['username'];
+            $sr['user_id'] = $user->id;
+            $sr['session'] = Qs::getSetting('current_session');
+
+            $this->student->createRecord($sr); // Create Student
+
+            return redirect()->route('students.list', [$req->my_class_id]);
+            return Qs::jsonStoreOk();
+        } catch (\Illuminate\Database\QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return Qs::json('Erro: Violação de entrada duplicada. Verifique os dados inseridos.', FALSE);
+            }
+            return Qs::json('Erro de banco de dados: ' . $e->getMessage(), FALSE);
+        } catch (\Exception $e) {
+            return Qs::json('Ocorreu um erro: ' . $e->getMessage(), FALSE);
         }
-
-        $user = $this->user->create($data); // Create User
-
-        $sr['adm_no'] = $data['username'];
-        $sr['user_id'] = $user->id;
-        $sr['session'] = Qs::getSetting('current_session');
-
-        $this->student->createRecord($sr); // Create Student
-        return Qs::jsonStoreOk();
     }
 
     public function listByClass($class_id)

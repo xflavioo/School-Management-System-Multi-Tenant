@@ -1,25 +1,28 @@
 <script>
 
-    function getLGA(state_id){
-        var url = '{{ route('get_lga', [':id']) }}';
+    function getLGA(state_id) {
+        if (!state_id) return;
+
+        var url = '{{ route('get_lgas', [':id']) }}';
         url = url.replace(':id', state_id);
-        var lga = $('#lga_id');
 
         $.ajax({
             dataType: 'json',
             url: url,
             success: function (resp) {
-                //console.log(resp);
-                lga.empty();
+                const lgaSelect = $('#lga_id');
+                lgaSelect.empty().append('<option value="">Escolha...</option>');
                 $.each(resp, function (i, data) {
-                    lga.append($('<option>', {
+                    lgaSelect.append($('<option>', {
                         value: data.id,
                         text: data.name
                     }));
                 });
-
+            },
+            error: function (err) {
+                console.log(err);
             }
-        })
+        });
     }
 
     function getClassSections(class_id, destination){
