@@ -1,8 +1,8 @@
-## **Laravel School Management System** 
+## **Sistema de Gestão Escolar Laravel** 
 
-**LAVSMS** is developed for educational institutions like schools and colleges built on Laravel 8
+**LAVSMS** é desenvolvido para instituições educacionais como escolas e faculdades construído em Laravel 8
 
-**SCREENSHOTS** 
+**CAPTURAS DE TELA** 
 
 **Dashboard**
 <img src="https://i.ibb.co/D4T0z6T/dashboard.png" alt="dashboard" border="0">
@@ -10,114 +10,128 @@
 **Login**
 <img src="https://i.ibb.co/Rh1Bfwk/login.png" alt="login" border="0">
 
-**Student Marksheet**
+**Boletim do Estudante**
 <img src="https://i.ibb.co/GCgv5ZR/marksheet.png" alt="marksheet" border="0">
 
-**System Settings**
+**Configurações do Sistema**
 <img src="https://i.ibb.co/Kmrhw69/system-settings.png" alt="system-settings" border="0">
 
-**Print Marksheet**
+**Imprimir Boletim**
 <div style="clear: both"> </div>
 <img src="https://i.ibb.co/5c1GHCj/capture-20210530-115521-crop.png" alt="print-marksheet">
 
-**Print Tabulation Sheet & Marksheet**
+**Imprimir Folha de Tabulação e Boletim**
 <img src="https://i.ibb.co/QmscPfn/capture-20210530-115802.png" alt="tabulation-sheet" border="0">
 
 <hr />  
 
-There are 7 types of user accounts. They include:
+Existem 7 tipos de contas de usuário. Eles incluem:
  
-Administrators (Super Admin & Admin)
-- Librarian
-- Accountant
-- Teacher
-- Student
-- Parent
+Administradores (Super Admin & Admin)
+- Bibliotecário
+- Contador
+- Professor
+- Estudante
+- Responsável
 
-**Requirements** 
+**Requisitos** 
 
-Check Laravel 8 Requirements https://laravel.com/docs/8.x
+Verifique os requisitos do Laravel 8 https://laravel.com/docs/8.x
 
-**Installation**
-- Install dependencies (composer install)
-- Set Database Credentials & App Settings in dotenv file (.env)
-- Migrate Database (php artisan migrate)
-- Database seed (php artisan db:seed)
+**Instalação**
+- Instalar dependências (composer install)
+- Definir credenciais do banco de dados e configurações do app no arquivo dotenv (.env)
+- Migrar banco de dados (php artisan migrate)
+- Executar seeds do banco (php artisan db:seed)
 
-**Login Credentials**
-After seeding. Login details as follows:
+**Credenciais de Login**
+Após executar os seeds. Detalhes de login são os seguintes:
 
-| Account Type  | Username | Email | Password |
-| ------------- | -------- | ----- | -------- |
+| Tipo de Conta | Nome de Usuário | Email | Senha |
+| ------------- | --------------- | ----- | ----- |
 | Super Admin | cj | cj@cj.com | cj |
-|  Admin | admin | admin@admin.com | cj |
-|  Teacher | teacher | teacher@teacher.com | cj |
-|  Parent | parent | parent@parent.com | cj |
-|  Accountant | accountant | accountant@accountant.com | cj |
-|  Student | student | student@student.com | cj |
+| Admin | admin | admin@admin.com | cj |
+| Professor | teacher | teacher@teacher.com | cj |
+| Responsável | parent | parent@parent.com | cj |
+| Contador | accountant | accountant@accountant.com | cj |
+| Estudante | student | student@student.com | cj |
 
-#### **FUNCTIONS OF ACCOUNTS** 
+#### **FUNÇÕES DAS CONTAS** 
 
 **-- SUPER ADMIN**
-- Only Super Admin can delete any record
-- Create any user account
+- Apenas o Super Admin pode excluir qualquer registro
+- Criar qualquer conta de usuário
  
-**-- Administrators (Super Admin & Admin)**
+**-- Administradores (Super Admin & Admin)**
 
-- Manage students class/sections
-- View marksheet of students
-- Create, Edit and manage all user accounts & profiles
-- Create, Edit and manage Exams & Grades
-- Create, Edit and manage Subjects
-- Manage noticeboard of school
-- Notices are visible in calendar in dashboard
-- Edit system settings
-- Manage Payments & fees
+- Gerenciar turmas/seções dos estudantes
+- Visualizar boletins dos estudantes
+- Criar, editar e gerenciar todas as contas de usuário e perfis
+- Criar, editar e gerenciar exames e notas
+- Criar, editar e gerenciar matérias
+- Gerenciar quadro de avisos da escola
+- Avisos são visíveis no calendário do dashboard
+- Editar configurações do sistema
+- Gerenciar pagamentos e taxas
 
-**-- ACCOUNTANT**
-- Manage Payments & fees
-- Print Payment Receipts
+**-- CONTADOR**
+- Gerenciar pagamentos e taxas
+- Imprimir recibos de pagamento
 
-**-- LIBRARIAN**
-- Manage Books in the Library
+**-- BIBLIOTECÁRIO**
+- Gerenciar livros na biblioteca
 
-**-- TEACHER**
-- Manage Own Class/Section
-- Manage Exam Records for own Subjects
-- Manage Timetable if Assigned as Class Teacher
-- Manage own profile
-- Upload Study Materials
+**-- PROFESSOR**
+- Gerenciar própria turma/seção
+- Gerenciar registros de exames para suas próprias matérias
+- Gerenciar horários se designado como professor de turma
+- Gerenciar próprio perfil
+- Enviar materiais de estudo
 
-**-- STUDENT**
-- View teacher profile
-- View own class subjects
-- View own marks and class timetable
-- View Payments
-- View library and book status
-- View noticeboard and school events in calendar
-- Manage own profile
+**-- ESTUDANTE**
+- Visualizar perfil do professor
+- Visualizar matérias da própria turma
+- Visualizar próprias notas e horários da turma
+- Visualizar pagamentos
+- Visualizar biblioteca e status dos livros
+- Visualizar quadro de avisos e eventos da escola no calendário
+- Gerenciar próprio perfil
 
-**-- PARENT**
-- View teacher profile
-- View own child's marksheet (Download/Print PDF)
-- View own child's Timetable
-- View own child's payments
-- View noticeboard and school events in calendar
-- Manage own profile
+**-- RESPONSÁVEL**
+- Visualizar perfil do professor
+- Visualizar boletim do próprio filho (Baixar/Imprimir PDF)
+- Visualizar horários do próprio filho
+- Visualizar pagamentos do próprio filho
+- Visualizar quadro de avisos e eventos da escola no calendário
+- Gerenciar próprio perfil
 
-### **Contributing**
+### **Contribuindo**
 
-Your Contributions & suggestions are welcomed.
+Suas contribuições e sugestões são bem-vindas.
 
-### **Security Vulnerabilities**
+### **Vulnerabilidades de Segurança**
 
-If you discover a security vulnerability within LAVSMS, please use pull request. All security vulnerabilities will be promptly addressed.
+Se você descobrir uma vulnerabilidade de segurança no LAVSMS, use um pull request. Todas as vulnerabilidades de segurança serão prontamente resolvidas.
 
-***Please Note*** that some sections of this project are in the work-in-progress stage and would be updated soon. These include:
+***Observação*** algumas seções deste projeto estão em estágio de trabalho em progresso e serão atualizadas em breve. Estas incluem:
 
-- The Noticeboard/Calendar in the Dashboard Area
-- Librarian/Acountant user pages
-- Library Resources/Study Materials Upload for Students
+- O quadro de avisos/calendário na área do dashboard
+- Páginas de usuário bibliotecário/contador
+- Recursos da biblioteca/envio de materiais de estudo para estudantes
 
-### **Contact [CJ INSPIRED]**
-- Phone : +2347068149559
+### **Scripts de Instalação e Deploy**
+
+**Instalação inicial:**
+```bash
+chmod +x instalar.sh
+./instalar.sh
+```
+
+**Deploy em produção:**
+```bash
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### **Contato [CJ INSPIRED]**
+- Telefone : +2347068149559
