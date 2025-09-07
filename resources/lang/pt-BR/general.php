@@ -10,6 +10,9 @@ return [
     'subjects' => 'Disciplinas',
     'exams' => 'Avaliações',
     'grades' => 'Notas',
+    'marks' => 'Notas',
+    'marksheet' => 'Boletim',
+    'my_account' => 'Minha Conta'
     'reports' => 'Relatórios',
     'settings' => 'Configurações',
     'payments' => 'Pagamentos',
