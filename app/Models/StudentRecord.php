@@ -12,6 +12,7 @@ class StudentRecord extends Eloquent
 
     protected $fillable = [
         'session', 'user_id', 'my_class_id', 'section_id', 'my_parent_id', 'dorm_id', 'dorm_room_no', 'adm_no', 'year_admitted', 'wd', 'wd_date', 'grad', 'grad_date', 'house', 'age',
+        'serie_id', 'turno_id', 'turma_id',
         'enrollment_type', 'transport_type', 'has_special_needs', 'special_needs_description',
         'emergency_contact_name', 'emergency_contact_phone', 'emergency_contact_relationship',
         'has_birth_certificate', 'has_vaccination_card', 'has_medical_certificate', 'has_transfer_certificate',
@@ -42,6 +43,30 @@ class StudentRecord extends Eloquent
     public function dorm()
     {
         return $this->belongsTo(Dorm::class);
+    }
+
+    /**
+     * Get the serie (Brazilian grade level) for this student
+     */
+    public function serie()
+    {
+        return $this->belongsTo(Serie::class);
+    }
+
+    /**
+     * Get the turno (shift) for this student
+     */
+    public function turno()
+    {
+        return $this->belongsTo(Turno::class);
+    }
+
+    /**
+     * Get the turma (class group) for this student
+     */
+    public function turma()
+    {
+        return $this->belongsTo(Turma::class);
     }
 
     /**
