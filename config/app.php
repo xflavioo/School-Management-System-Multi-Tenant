@@ -162,6 +162,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TenancyServiceProvider::class,
+        App\Providers\ViewFormattingServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
     ],
 

@@ -18,11 +18,18 @@ class BrazilianFormat
             return '';
         }
 
-        if (is_string($date)) {
-            $date = Carbon::parse($date);
+        $carbon = $date instanceof Carbon ? $date : Carbon::parse($date);
+        
+        // Try to get timezone from config, fallback to default
+        try {
+            $timezone = function_exists('config') && app()->bound('config') 
+                ? config('app.timezone', 'America/Sao_Paulo') 
+                : 'America/Sao_Paulo';
+        } catch (\Exception $e) {
+            $timezone = 'America/Sao_Paulo';
         }
-
-        return $date->format('d/m/Y');
+        
+        return $carbon->timezone($timezone)->format('d/m/Y');
     }
 
     /**
@@ -37,11 +44,18 @@ class BrazilianFormat
             return '';
         }
 
-        if (is_string($datetime)) {
-            $datetime = Carbon::parse($datetime);
+        $carbon = $datetime instanceof Carbon ? $datetime : Carbon::parse($datetime);
+        
+        // Try to get timezone from config, fallback to default
+        try {
+            $timezone = function_exists('config') && app()->bound('config') 
+                ? config('app.timezone', 'America/Sao_Paulo') 
+                : 'America/Sao_Paulo';
+        } catch (\Exception $e) {
+            $timezone = 'America/Sao_Paulo';
         }
-
-        return $datetime->format('d/m/Y H:i');
+        
+        return $carbon->timezone($timezone)->format('d/m/Y H:i');
     }
 
     /**
@@ -54,10 +68,34 @@ class BrazilianFormat
     public static function money($value, $decimals = 2)
     {
         if ($value === null || $value === '') {
-            return 'R$ 0,00';
+            return '';
         }
 
+        // Use NumberFormatter if available, fallback to number_format
+        if (class_exists('NumberFormatter')) {
+            $fmt = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+            $formatted = $fmt->formatCurrency((float)$value, 'BRL');
+            // Replace non-breaking space with regular space for consistency
+            return str_replace("\xC2\xA0", ' ', $formatted);
+        }
+        
         return 'R$ ' . number_format((float) $value, $decimals, ',', '.');
+    }
+
+    /**
+     * Format number to Brazilian format (1.234,56)
+     *
+     * @param float|int $value
+     * @param int $decimals
+     * @return string
+     */
+    public static function number($value, $decimals = 2)
+    {
+        if ($value === null || $value === '') {
+            return '';
+        }
+
+        return number_format((float) $value, $decimals, ',', '.');
     }
 
     /**
