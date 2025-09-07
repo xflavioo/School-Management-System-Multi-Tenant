@@ -215,6 +215,7 @@ return [
         'Qs' => App\Helpers\Qs::class,
         'Mk' => App\Helpers\Mk::class,
         'Pay' => App\Helpers\Pay::class,
+        'BrazilianFormat' => App\Helpers\BrazilianFormat::class,
     ],
 
 ];
