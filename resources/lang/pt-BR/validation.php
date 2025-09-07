@@ -114,6 +114,14 @@ return [
     'url'                  => 'O formato do campo :attribute é inválido.',
     'uuid'                 => 'O campo :attribute deve ser um UUID válido.',
 
+    // Brazilian-specific validation messages
+    'cpf'                  => 'O campo :attribute deve ser um CPF válido.',
+    'cnpj'                 => 'O campo :attribute deve ser um CNPJ válido.',
+    'cep'                  => 'O campo :attribute deve ser um CEP válido (formato: 00000-000).',
+    'phone_br'             => 'O campo :attribute deve ser um telefone brasileiro válido.',
+    'rg'                   => 'O campo :attribute deve ser um RG válido.',
+    'brazilian_date'       => 'O campo :attribute deve ser uma data válida no formato dd/mm/aaaa.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -142,6 +150,51 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'nome',
+        'username' => 'nome de usuário',
+        'email' => 'e-mail',
+        'password' => 'senha',
+        'password_confirmation' => 'confirmação da senha',
+        'phone' => 'telefone',
+        'phone_mobile' => 'celular',
+        'phone_home' => 'telefone residencial',
+        'address' => 'endereço',
+        'date_of_birth' => 'data de nascimento',
+        'gender' => 'gênero',
+        'photo' => 'foto',
+        'code' => 'código',
+        'description' => 'descrição',
+        'status' => 'status',
+        'date' => 'data',
+        'time' => 'horário',
+        'year' => 'ano',
+        'session' => 'ano letivo',
+        'semester' => 'semestre',
+        'class' => 'turma',
+        'section' => 'seção',
+        'subject' => 'disciplina',
+        'cpf' => 'CPF',
+        'cnpj' => 'CNPJ',
+        'rg' => 'RG',
+        'rg_issuer' => 'órgão emissor do RG',
+        'rg_state' => 'UF do RG',
+        'cep' => 'CEP',
+        'street' => 'logradouro',
+        'number' => 'número',
+        'complement' => 'complemento',
+        'neighborhood' => 'bairro',
+        'city' => 'município',
+        'state' => 'estado',
+        'uf' => 'UF',
+        'social_name' => 'nome social',
+        'enrollment_number' => 'número de matrícula',
+        'enrollment_date' => 'data de matrícula',
+        'grade_level' => 'série/ano',
+        'shift' => 'turno',
+        'attendance' => 'frequência',
+        'grade' => 'nota',
+        'average' => 'média',
+    ],
 
 ];
