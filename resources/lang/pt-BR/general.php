@@ -96,6 +96,11 @@ return [
     'social_name' => 'Nome Social',
     'birth_certificate' => 'Certidão de Nascimento',
     'vaccination_card' => 'Cartão de Vacinação',
+    'personal_documents' => 'Documentos Pessoais',
+    'contact_info' => 'Informações de Contato',
+    'rg_issue_date' => 'Data de Emissão do RG',
+    'sus_card' => 'Cartão SUS',
+    'nis' => 'NIS/PIS/PASEP',
     
     // School specific
     'enrollment_number' => 'Número de Matrícula',
